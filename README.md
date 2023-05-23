@@ -1,4 +1,4 @@
-# ensta-in211-web
+# centrale-ei-web
 
 ## Backend
 
