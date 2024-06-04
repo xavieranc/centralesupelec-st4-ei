@@ -3,13 +3,14 @@ import logger from 'morgan';
 import cors from 'cors';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
+import moviesRouter from './routes/movies.js' ;
 import { routeNotFoundJsonHandler } from './services/routeNotFoundJsonHandler.js';
 import { jsonErrorHandler } from './services/jsonErrorHandler.js';
-import { appDataSource } from './datasource.js';
+// import { appDataSource } from './datasource.js';
 
-appDataSource
-  .initialize()
-  .then(() => {
+// appDataSource
+//   .initialize()
+//   .then(() => {
     console.log('Data Source has been initialized!');
     const app = express();
 
@@ -21,6 +22,7 @@ appDataSource
     // Register routes
     app.use('/', indexRouter);
     app.use('/users', usersRouter);
+    app.use('/movies', moviesRouter);
 
     // Register 404 middleware and error handler
     app.use(routeNotFoundJsonHandler); // this middleware must be registered after all routes to handle 404 correctly
@@ -31,7 +33,7 @@ appDataSource
     app.listen(port, () => {
       console.log(`Server listening at http://localhost:${port}`);
     });
-  })
-  .catch((err) => {
-    console.error('Error during Data Source initialization:', err);
-  });
+  // })
+  // .catch((err) => {
+  //   console.error('Error during Data Source initialization:', err);
+  // });
