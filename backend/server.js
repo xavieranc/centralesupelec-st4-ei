@@ -6,11 +6,11 @@ import usersRouter from './routes/users.js';
 import moviesRouter from './routes/movies.js' ;
 import { routeNotFoundJsonHandler } from './services/routeNotFoundJsonHandler.js';
 import { jsonErrorHandler } from './services/jsonErrorHandler.js';
-// import { appDataSource } from './datasource.js';
+import { appDataSource } from './datasource.js';
 
-// appDataSource
-//   .initialize()
-//   .then(() => {
+appDataSource
+  .initialize()
+  .then(() => {
     console.log('Data Source has been initialized!');
     const app = express();
 
@@ -33,7 +33,7 @@ import { jsonErrorHandler } from './services/jsonErrorHandler.js';
     app.listen(port, () => {
       console.log(`Server listening at http://localhost:${port}`);
     });
-  // })
-  // .catch((err) => {
-  //   console.error('Error during Data Source initialization:', err);
-  // });
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization:', err);
+  });
